@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TowerOfHanoi : MonoBehaviour
 {
@@ -9,8 +10,14 @@ public class TowerOfHanoi : MonoBehaviour
     public GameObject[] WheelPrefabs;
     public GameObject PickUpBox;
     public GameObject[] WheelParents;
+    public GameObject HomeButton;
+    public GameObject ResetButton;
+    public Text CountText;
 
-    public int GameLevel = 1;
+    public int GameLevel = 0;
+    public int MoveCount = 0;
+
+    public bool GameStarted = true;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +34,13 @@ public class TowerOfHanoi : MonoBehaviour
 
     void StartGame()
     {
+        //SetGameLevel(level);
         StartCoroutine(MakeTowerBySelectLevel(GameLevel));
+    }
+
+    void SetGameLevel(int level)
+    {
+        GameLevel = level;
     }
 
     IEnumerator MakeTowerBySelectLevel(int level)
@@ -83,8 +96,15 @@ public class TowerOfHanoi : MonoBehaviour
         else return 8;
     }
 
+    public void SetTextForCount()
+    {
+        if (MoveCount <= 1000) MoveCount++;
+        CountText.text = "Count " + MoveCount.ToString();
+    }
+
     public void GameSet()
     {
-
+        Debug.Log("GameSet");
+        GameStarted = false;
     }
 }

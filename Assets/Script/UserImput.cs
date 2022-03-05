@@ -43,12 +43,26 @@ public class UserImput : MonoBehaviour
         if (ToH.HasPickUp())
         {
             //Debug.Log("HasPickUp");
-            if (ToH.IsValidForValue(index)) wheelStack.PushWheel(index);
+            if (ToH.IsValidForValue(index))
+            {
+                wheelStack.PushWheel(index);
+                ToH.SetTextForCount();
+            }
         }
         else if(!wheelStack.IsEmpty(index))
         {
             wheelStack.GetWheel(index);
             wheelStack.PopWheel(ToH.GetPickUp(),index);
         }
+    }
+
+    public void TouchHomeButton()
+    {
+        Debug.Log("TouchHomeButton");
+    }
+
+    public void TouchResetButton()
+    {
+        Debug.Log("TouchResetButton");
     }
 }
