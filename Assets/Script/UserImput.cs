@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class UserImput : MonoBehaviour
 {
+    TowerOfHanoi ToH;
     // Start is called before the first frame update
     void Start()
     {
-        
+        ToH = FindObjectOfType<TowerOfHanoi>();
     }
 
     // Update is called once per frame
@@ -19,6 +20,8 @@ public class UserImput : MonoBehaviour
     public void PopFromLeft()
     {
         Debug.Log("PopFromLeft():");
+        //if(PickUp.empty())ˆê”Ôã‚ğPickUp‚ÉˆÚ‚·ŠÖ”()
+        //else PickUp‚©‚çLeft‚ÉˆÚ‚·ŠÖ”()
     }
 
     public void PopFromCenter()
