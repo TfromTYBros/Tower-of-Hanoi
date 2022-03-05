@@ -4,23 +4,18 @@ using UnityEngine;
 
 public class TowerOfHanoi : MonoBehaviour
 {
+    WheelStack wheelStack;
     public GameObject[] Bases;
     public GameObject[] WheelPrefabs;
-    public GameObject PickUpWheel;
-    public GameObject WheelsParent;
+    public GameObject PickUpBox;
+    public GameObject[] WheelParents;
 
-    public int GameLevel = 8;
-    /*
-    public int WheelsCount_Left = 0;
-    public int WheelsCount_Center = 0;
-    public int WheelsCount_Right = 0;*/
-    public Stack<GameObject> Stack_Left;
-    public Stack<GameObject> Stack_Center;
-    public Stack<GameObject> Stack_Right;
+    public int GameLevel = 1;
 
     // Start is called before the first frame update
     void Start()
     {
+        wheelStack = FindObjectOfType<WheelStack>();
         StartGame();
     }
 
@@ -37,26 +32,58 @@ public class TowerOfHanoi : MonoBehaviour
 
     IEnumerator MakeTowerBySelectLevel(int level)
     {
-        //WheelsCount_Left = level;
-
-        float yOffset = 0.5f;
         for(int i = level-1; i >= 0; i--)
         {
             yield return new WaitForSeconds(0.1f);
-            GameObject newWheel = Instantiate(WheelPrefabs[i], new Vector3(Bases[0].transform.position.x, Bases[0].transform.position.y + yOffset, Bases[0].transform.position.z), Quaternion.Euler(0, 0, 90f),WheelsParent.transform);
+            GameObject newWheel = Instantiate(WheelPrefabs[i], SetDistance(0), Quaternion.Euler(0, 0, 90f),WheelParents[0].transform);
             newWheel.name = "Wheel Value" + (i+1).ToString();
-            yOffset += 0.5f;
         }
         
     }
 
-    void PickUp()
+    public Vector3 SetDistance(int index)
     {
-        //if(WheelsCount_Left != 0)一番上のオブジェクトを空中のY座標に移動させる
-
+        GameObject onebase = Bases[index];
+        return new Vector3(onebase.transform.position.x, onebase.transform.position.y + 0.5f + (wheelStack.GetChildCount(index) * 0.5f), onebase.transform.position.z);
     }
 
-    void GameSet()
+    public bool HasPickUp()
+    {
+        return 0 < PickUpBox.transform.childCount;
+    }
+
+    public GameObject GetPickUp()
+    {
+        return PickUpBox.transform.GetChild(0).gameObject;
+    }
+
+    public bool IsValidForValue(int index)
+    {
+        int pickWheelRank = IsRank(PickUpBox.transform.GetChild(0).gameObject);
+        int topWheelRank = 0;
+        if (wheelStack.peekWheel(index) == null) return true;
+        else topWheelRank = IsRank(wheelStack.peekWheel(index));
+
+        //Debug.Log("picknum" + pickWheelRank);
+        //Debug.Log("topnum" + topWheelRank);
+
+        return pickWheelRank < topWheelRank;
+    }
+
+    int IsRank(GameObject obj)
+    {
+        //Debug.Log("IsRank():");
+        if (obj.name == "Wheel Value1") return 1;
+        else if (obj.name == "Wheel Value2") return 2;
+        else if (obj.name == "Wheel Value3") return 3;
+        else if (obj.name == "Wheel Value4") return 4;
+        else if (obj.name == "Wheel Value5") return 5;
+        else if (obj.name == "Wheel Value6") return 6;
+        else if (obj.name == "Wheel Value7") return 7;
+        else return 8;
+    }
+
+    public void GameSet()
     {
 
     }

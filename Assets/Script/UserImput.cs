@@ -5,10 +5,12 @@ using UnityEngine;
 public class UserImput : MonoBehaviour
 {
     TowerOfHanoi ToH;
+    WheelStack wheelStack;
     // Start is called before the first frame update
     void Start()
     {
         ToH = FindObjectOfType<TowerOfHanoi>();
+        wheelStack = FindObjectOfType<WheelStack>();
     }
 
     // Update is called once per frame
@@ -17,20 +19,36 @@ public class UserImput : MonoBehaviour
         
     }
 
-    public void PopFromLeft()
+    public void TouchLeft()
     {
-        Debug.Log("PopFromLeft():");
-        //if(PickUp.empty())àÍî‘è„ÇPickUpÇ…à⁄Ç∑ä÷êî()
-        //else PickUpÇ©ÇÁLeftÇ…à⁄Ç∑ä÷êî()
+        //Debug.Log("TouchLeft(): ");
+        Move(0);
     }
 
-    public void PopFromCenter()
+    public void TouchCenter()
     {
-        Debug.Log("PopFromCenter():");
+        //Debug.Log("TouchCenter(): ");
+        Move(1);
     }
 
-    public void PopFromRight()
+    public void TouchRight()
     {
-        Debug.Log("PopFromRight():");
+        //Debug.Log("TouchRight(): ");
+        Move(2);
+        if (wheelStack.GetChildCount(2) == ToH.GameLevel) ToH.GameSet();
+    }
+
+    void Move(int index)
+    {
+        if (ToH.HasPickUp())
+        {
+            //Debug.Log("HasPickUp");
+            if (ToH.IsValidForValue(index)) wheelStack.PushWheel(index);
+        }
+        else if(!wheelStack.IsEmpty(index))
+        {
+            wheelStack.GetWheel(index);
+            wheelStack.PopWheel(ToH.GetPickUp(),index);
+        }
     }
 }
