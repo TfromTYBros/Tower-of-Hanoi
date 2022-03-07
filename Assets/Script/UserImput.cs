@@ -13,12 +13,6 @@ public class UserImput : MonoBehaviour
         wheelStack = FindObjectOfType<WheelStack>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void TouchLeft()
     {
         //Debug.Log("TouchLeft(): ");
@@ -35,7 +29,7 @@ public class UserImput : MonoBehaviour
     {
         //Debug.Log("TouchRight(): ");
         Move(2);
-        if (wheelStack.GetChildCount(2) == ToH.GameLevel) ToH.GameSet();
+        if (wheelStack.GetChildCount(2) == TowerOfHanoi.GetGameLevel()) ToH.GameSet();
     }
 
     void Move(int index)
@@ -52,7 +46,7 @@ public class UserImput : MonoBehaviour
         else if(!wheelStack.IsEmpty(index))
         {
             wheelStack.GetWheel(index);
-            wheelStack.PopWheel(ToH.GetPickUp(),index);
+            wheelStack.PopWheel(ToH.GetPickUpChild(),index);
         }
     }
 

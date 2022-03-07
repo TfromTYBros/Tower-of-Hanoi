@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TowerOfHanoi : MonoBehaviour
 {
     WheelStack wheelStack;
+
     public GameObject[] Bases;
     public GameObject[] WheelPrefabs;
     public GameObject PickUpBox;
@@ -14,8 +15,8 @@ public class TowerOfHanoi : MonoBehaviour
     public GameObject ResetButton;
     public Text CountText;
 
-    public int GameLevel = 0;
-    public int MoveCount = 0;
+    public static int GameLevel = 1;
+    private int MoveCount = 0;
 
     public bool GameStarted = true;
 
@@ -26,21 +27,19 @@ public class TowerOfHanoi : MonoBehaviour
         StartGame();
     }
 
-    // Update is called once per frame
-    void Update()
+    public static void SetGameLevel(int level)
     {
-        
+        GameLevel = level;
+    }
+
+    public static int GetGameLevel()
+    {
+        return GameLevel;
     }
 
     void StartGame()
     {
-        //SetGameLevel(level);
         StartCoroutine(MakeTowerBySelectLevel(GameLevel));
-    }
-
-    void SetGameLevel(int level)
-    {
-        GameLevel = level;
     }
 
     IEnumerator MakeTowerBySelectLevel(int level)
@@ -62,20 +61,39 @@ public class TowerOfHanoi : MonoBehaviour
 
     public bool HasPickUp()
     {
-        return 0 < PickUpBox.transform.childCount;
+        return 0 < GetPickUpBoxChildCount();
     }
 
-    public GameObject GetPickUp()
+    public void SetPickUpChild(int index)
+    {
+        Debug.Log("SetPickUpChild(): ");
+        WheelParents[index].transform.gameObject.transform.GetChild(wheelStack.GetChildCount(index) - 1).gameObject.transform.parent = GetPickUpChild().transform;
+        
+    }
+
+    public GameObject GetPickUpBox()
+    {
+        return PickUpBox;
+    }
+
+    public GameObject GetPickUpChild()
     {
         return PickUpBox.transform.GetChild(0).gameObject;
     }
 
+    public int GetPickUpBoxChildCount()
+    {
+        int count = PickUpBox.transform.childCount == 1 ? 1 : 0;
+        Debug.Log("count(): " + count);
+        return count;
+    }
+
     public bool IsValidForValue(int index)
     {
-        int pickWheelRank = IsRank(PickUpBox.transform.GetChild(0).gameObject);
-        int topWheelRank = 0;
-        if (wheelStack.peekWheel(index) == null) return true;
-        else topWheelRank = IsRank(wheelStack.peekWheel(index));
+        int pickWheelRank = IsRank(GetPickUpChild());
+        int topWheelRank;
+        if (wheelStack.PeekWheel(index) == null) return true;
+        else topWheelRank = IsRank(wheelStack.PeekWheel(index));
 
         //Debug.Log("picknum" + pickWheelRank);
         //Debug.Log("topnum" + topWheelRank);
@@ -100,6 +118,11 @@ public class TowerOfHanoi : MonoBehaviour
     {
         if (MoveCount <= 1000) MoveCount++;
         CountText.text = "Count " + MoveCount.ToString();
+    }
+
+    public void ResetMethod()
+    {
+        GameObject.Destroy(GetPickUpChild());
     }
 
     public void GameSet()

@@ -11,12 +11,6 @@ public class WheelStack : MonoBehaviour
         ToH = FindObjectOfType<TowerOfHanoi>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public int GetChildCount(int index)
     {
         //Debug.Log(ToH.WheelParents[index].gameObject.transform.childCount);
@@ -25,10 +19,11 @@ public class WheelStack : MonoBehaviour
 
     public void GetWheel(int index)
     {
-        ToH.WheelParents[index].transform.gameObject.transform.GetChild(GetChildCount(index) - 1).gameObject.transform.parent = ToH.PickUpBox.transform;
+        Debug.Log("GetChildCount(0): " + GetChildCount(0));
+        ToH.WheelParents[index].transform.gameObject.transform.GetChild(GetChildCount(index) - 1).gameObject.transform.parent = ToH.GetPickUpBox().transform;
     }
 
-    public GameObject peekWheel(int index)
+    public GameObject PeekWheel(int index)
     {
         if (GetChildCount(index) <= 0) return null;
         return ToH.WheelParents[index].transform.GetChild(GetChildCount(index) - 1).gameObject;
@@ -49,7 +44,7 @@ public class WheelStack : MonoBehaviour
     public void PushWheel(int index)
     {
         //Debug.Log("PushWheel()");
-        GameObject wheel = ToH.PickUpBox.transform.GetChild(0).gameObject;
+        GameObject wheel = ToH.GetPickUpChild();
 
         wheel.transform.position = ToH.SetDistance(index);
 

@@ -1,0 +1,1604 @@
+From 8e60a56fa99471c1c0c8e75d03fb8b9c0f8166be Mon Sep 17 00:00:00 2001
+From: TfromTYBros <kanshashitemasu358@gmail.com>
+Date: Sat, 5 Mar 2022 18:24:38 +0900
+Subject: [PATCH] =?UTF-8?q?Timer=E5=AE=8C=E6=88=90?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ Assets/Picture.meta                 |   8 +
+ Assets/Picture/house.png            | Bin 0 -> 3379 bytes
+ Assets/Picture/house.png.meta       |  96 +++++
+ Assets/Picture/resetbutton.png      | Bin 0 -> 25870 bytes
+ Assets/Picture/resetbutton.png.meta |  96 +++++
+ Assets/Scenes/SampleScene.unity     | 588 ++++++++++++++++++++++++++++
+ Assets/Script/TimerScript.cs        |  52 +++
+ Assets/Script/TimerScript.cs.meta   |  11 +
+ Assets/Script/TowerOfHanoi.cs       |  24 +-
+ Assets/Script/UserImput.cs          |  16 +-
+ 10 files changed, 888 insertions(+), 3 deletions(-)
+ create mode 100644 Assets/Picture.meta
+ create mode 100644 Assets/Picture/house.png
+ create mode 100644 Assets/Picture/house.png.meta
+ create mode 100644 Assets/Picture/resetbutton.png
+ create mode 100644 Assets/Picture/resetbutton.png.meta
+ create mode 100644 Assets/Script/TimerScript.cs
+ create mode 100644 Assets/Script/TimerScript.cs.meta
+
+diff --git a/Assets/Picture.meta b/Assets/Picture.meta
+new file mode 100644
+index 0000000..57d77af
+--- /dev/null
++++ b/Assets/Picture.meta
+@@ -0,0 +1,8 @@
++fileFormatVersion: 2
++guid: 7a6f9ce4ac741fd4c9da4834fb048206
++folderAsset: yes
++DefaultImporter:
++  externalObjects: {}
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
+diff --git a/Assets/Picture/house.png b/Assets/Picture/house.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..f998d281eaf2e3c9a2349be787df4868ad40f547
+GIT binary patch
+literal 3379
+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
+
+literal 0
+HcmV?d00001
+
+diff --git a/Assets/Picture/house.png.meta b/Assets/Picture/house.png.meta
+new file mode 100644
+index 0000000..2fdacaa
+--- /dev/null
++++ b/Assets/Picture/house.png.meta
+@@ -0,0 +1,96 @@
++fileFormatVersion: 2
++guid: fef510bddf1a62b4eb352f7454c6dd5c
++TextureImporter:
++  internalIDToNameTable: []
++  externalObjects: {}
++  serializedVersion: 11
++  mipmaps:
++    mipMapMode: 0
++    enableMipMap: 0
++    sRGBTexture: 1
++    linearTexture: 0
++    fadeOut: 0
++    borderMipMap: 0
++    mipMapsPreserveCoverage: 0
++    alphaTestReferenceValue: 0.5
++    mipMapFadeDistanceStart: 1
++    mipMapFadeDistanceEnd: 3
++  bumpmap:
++    convertToNormalMap: 0
++    externalNormalMap: 0
++    heightScale: 0.25
++    normalMapFilter: 0
++  isReadable: 0
++  streamingMipmaps: 0
++  streamingMipmapsPriority: 0
++  vTOnly: 0
++  grayScaleToAlpha: 0
++  generateCubemap: 6
++  cubemapConvolution: 0
++  seamlessCubemap: 0
++  textureFormat: 1
++  maxTextureSize: 2048
++  textureSettings:
++    serializedVersion: 2
++    filterMode: 1
++    aniso: 1
++    mipBias: 0
++    wrapU: 1
++    wrapV: 1
++    wrapW: 1
++  nPOTScale: 0
++  lightmap: 0
++  compressionQuality: 50
++  spriteMode: 1
++  spriteExtrude: 1
++  spriteMeshType: 1
++  alignment: 0
++  spritePivot: {x: 0.5, y: 0.5}
++  spritePixelsToUnits: 100
++  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
++  spriteGenerateFallbackPhysicsShape: 1
++  alphaUsage: 1
++  alphaIsTransparency: 1
++  spriteTessellationDetail: -1
++  textureType: 8
++  textureShape: 1
++  singleChannelComponent: 0
++  flipbookRows: 1
++  flipbookColumns: 1
++  maxTextureSizeSet: 0
++  compressionQualitySet: 0
++  textureFormatSet: 0
++  ignorePngGamma: 0
++  applyGammaDecoding: 0
++  platformSettings:
++  - serializedVersion: 3
++    buildTarget: DefaultTexturePlatform
++    maxTextureSize: 2048
++    resizeAlgorithm: 0
++    textureFormat: -1
++    textureCompression: 1
++    compressionQuality: 50
++    crunchedCompression: 0
++    allowsAlphaSplitting: 0
++    overridden: 0
++    androidETC2FallbackOverride: 0
++    forceMaximumCompressionQuality_BC6H_BC7: 0
++  spriteSheet:
++    serializedVersion: 2
++    sprites: []
++    outline: []
++    physicsShape: []
++    bones: []
++    spriteID: 5e97eb03825dee720800000000000000
++    internalID: 0
++    vertices: []
++    indices: 
++    edges: []
++    weights: []
++    secondaryTextures: []
++  spritePackingTag: 
++  pSDRemoveMatte: 0
++  pSDShowRemoveMatteOption: 0
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
+diff --git a/Assets/Picture/resetbutton.png b/Assets/Picture/resetbutton.png
+new file mode 100644
+index 0000000000000000000000000000000000000000..dc3aafc1938b7545cd55b42a6d240e10bfc7920f
+GIT binary patch
+literal 25870
+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%0D!Gi;t6
+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
+
+literal 0
+HcmV?d00001
+
+diff --git a/Assets/Picture/resetbutton.png.meta b/Assets/Picture/resetbutton.png.meta
+new file mode 100644
+index 0000000..96ef4de
+--- /dev/null
++++ b/Assets/Picture/resetbutton.png.meta
+@@ -0,0 +1,96 @@
++fileFormatVersion: 2
++guid: ba19d43b1b91d6a4da08a91e9228c8fe
++TextureImporter:
++  internalIDToNameTable: []
++  externalObjects: {}
++  serializedVersion: 11
++  mipmaps:
++    mipMapMode: 0
++    enableMipMap: 0
++    sRGBTexture: 1
++    linearTexture: 0
++    fadeOut: 0
++    borderMipMap: 0
++    mipMapsPreserveCoverage: 0
++    alphaTestReferenceValue: 0.5
++    mipMapFadeDistanceStart: 1
++    mipMapFadeDistanceEnd: 3
++  bumpmap:
++    convertToNormalMap: 0
++    externalNormalMap: 0
++    heightScale: 0.25
++    normalMapFilter: 0
++  isReadable: 0
++  streamingMipmaps: 0
++  streamingMipmapsPriority: 0
++  vTOnly: 0
++  grayScaleToAlpha: 0
++  generateCubemap: 6
++  cubemapConvolution: 0
++  seamlessCubemap: 0
++  textureFormat: 1
++  maxTextureSize: 2048
++  textureSettings:
++    serializedVersion: 2
++    filterMode: 1
++    aniso: 1
++    mipBias: 0
++    wrapU: 1
++    wrapV: 1
++    wrapW: 1
++  nPOTScale: 0
++  lightmap: 0
++  compressionQuality: 50
++  spriteMode: 1
++  spriteExtrude: 1
++  spriteMeshType: 1
++  alignment: 0
++  spritePivot: {x: 0.5, y: 0.5}
++  spritePixelsToUnits: 100
++  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
++  spriteGenerateFallbackPhysicsShape: 1
++  alphaUsage: 1
++  alphaIsTransparency: 1
++  spriteTessellationDetail: -1
++  textureType: 8
++  textureShape: 1
++  singleChannelComponent: 0
++  flipbookRows: 1
++  flipbookColumns: 1
++  maxTextureSizeSet: 0
++  compressionQualitySet: 0
++  textureFormatSet: 0
++  ignorePngGamma: 0
++  applyGammaDecoding: 0
++  platformSettings:
++  - serializedVersion: 3
++    buildTarget: DefaultTexturePlatform
++    maxTextureSize: 2048
++    resizeAlgorithm: 0
++    textureFormat: -1
++    textureCompression: 1
++    compressionQuality: 50
++    crunchedCompression: 0
++    allowsAlphaSplitting: 0
++    overridden: 0
++    androidETC2FallbackOverride: 0
++    forceMaximumCompressionQuality_BC6H_BC7: 0
++  spriteSheet:
++    serializedVersion: 2
++    sprites: []
++    outline: []
++    physicsShape: []
++    bones: []
++    spriteID: 5e97eb03825dee720800000000000000
++    internalID: 0
++    vertices: []
++    indices: 
++    edges: []
++    weights: []
++    secondaryTextures: []
++  spritePackingTag: 
++  pSDRemoveMatte: 0
++  pSDShowRemoveMatteOption: 0
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
+diff --git a/Assets/Scenes/SampleScene.unity b/Assets/Scenes/SampleScene.unity
+index 02d6fe9..983d092 100644
+--- a/Assets/Scenes/SampleScene.unity
++++ b/Assets/Scenes/SampleScene.unity
+@@ -363,7 +363,12 @@ MonoBehaviour:
+   - {fileID: 1055267041}
+   - {fileID: 1548987145}
+   - {fileID: 1316816475}
++  HomeButton: {fileID: 1755621659}
++  ResetButton: {fileID: 1776994548}
++  CountText: {fileID: 1113847494}
+   GameLevel: 8
++  MoveCount: 0
++  GameStarted: 1
+ --- !u!1 &316183558
+ GameObject:
+   m_ObjectHideFlags: 0
+@@ -910,6 +915,36 @@ SpriteRenderer:
+   m_WasSpriteAssigned: 1
+   m_MaskInteraction: 0
+   m_SpriteSortPoint: 0
++--- !u!1 &792289309
++GameObject:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  serializedVersion: 6
++  m_Component:
++  - component: {fileID: 792289310}
++  m_Layer: 0
++  m_Name: "\u6B21\u306F\u30B7\u30FC\u30F3\u4F5C\u308A"
++  m_TagString: Untagged
++  m_Icon: {fileID: 0}
++  m_NavMeshLayer: 0
++  m_StaticEditorFlags: 0
++  m_IsActive: 1
++--- !u!4 &792289310
++Transform:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 792289309}
++  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
++  m_LocalPosition: {x: -1.5901184, y: 1.2381814, z: -0.142681}
++  m_LocalScale: {x: 1, y: 1, z: 1}
++  m_Children: []
++  m_Father: {fileID: 0}
++  m_RootOrder: 10
++  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+ --- !u!1 &803676781
+ GameObject:
+   m_ObjectHideFlags: 0
+@@ -1025,6 +1060,99 @@ Transform:
+   m_Father: {fileID: 1145384455}
+   m_RootOrder: 1
+   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
++--- !u!1 &940844193
++GameObject:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  serializedVersion: 6
++  m_Component:
++  - component: {fileID: 940844194}
++  - component: {fileID: 940844197}
++  - component: {fileID: 940844196}
++  - component: {fileID: 940844195}
++  m_Layer: 5
++  m_Name: Timer
++  m_TagString: Untagged
++  m_Icon: {fileID: 0}
++  m_NavMeshLayer: 0
++  m_StaticEditorFlags: 0
++  m_IsActive: 1
++--- !u!224 &940844194
++RectTransform:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 940844193}
++  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
++  m_LocalPosition: {x: 0, y: 0, z: 0}
++  m_LocalScale: {x: 1, y: 1, z: 1}
++  m_Children: []
++  m_Father: {fileID: 1463970452}
++  m_RootOrder: 1
++  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
++  m_AnchorMin: {x: 0.5, y: 0.5}
++  m_AnchorMax: {x: 0.5, y: 0.5}
++  m_AnchoredPosition: {x: 0, y: 420}
++  m_SizeDelta: {x: 160, y: 30}
++  m_Pivot: {x: 0.5, y: 0.5}
++--- !u!114 &940844195
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 940844193}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: 030fa52dcba9be0479457c8ad2cef377, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: 
++  TimerText: {fileID: 940844196}
++--- !u!114 &940844196
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 940844193}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: 
++  m_Material: {fileID: 0}
++  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
++  m_RaycastTarget: 1
++  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
++  m_Maskable: 1
++  m_OnCullStateChanged:
++    m_PersistentCalls:
++      m_Calls: []
++  m_FontData:
++    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
++    m_FontSize: 50
++    m_FontStyle: 0
++    m_BestFit: 0
++    m_MinSize: 5
++    m_MaxSize: 50
++    m_Alignment: 4
++    m_AlignByGeometry: 0
++    m_RichText: 1
++    m_HorizontalOverflow: 1
++    m_VerticalOverflow: 1
++    m_LineSpacing: 1
++  m_Text: 00:00
++--- !u!222 &940844197
++CanvasRenderer:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 940844193}
++  m_CullTransparentMesh: 1
+ --- !u!1 &1055267041
+ GameObject:
+   m_ObjectHideFlags: 0
+@@ -1101,6 +1229,85 @@ Transform:
+   m_Father: {fileID: 0}
+   m_RootOrder: 6
+   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
++--- !u!1 &1113847492
++GameObject:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  serializedVersion: 6
++  m_Component:
++  - component: {fileID: 1113847493}
++  - component: {fileID: 1113847495}
++  - component: {fileID: 1113847494}
++  m_Layer: 5
++  m_Name: MoveCountText
++  m_TagString: Untagged
++  m_Icon: {fileID: 0}
++  m_NavMeshLayer: 0
++  m_StaticEditorFlags: 0
++  m_IsActive: 1
++--- !u!224 &1113847493
++RectTransform:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1113847492}
++  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
++  m_LocalPosition: {x: 0, y: 0, z: 0}
++  m_LocalScale: {x: 1, y: 1, z: 1}
++  m_Children: []
++  m_Father: {fileID: 1463970452}
++  m_RootOrder: 0
++  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
++  m_AnchorMin: {x: 0.5, y: 0.5}
++  m_AnchorMax: {x: 0.5, y: 0.5}
++  m_AnchoredPosition: {x: 564, y: 420}
++  m_SizeDelta: {x: 100, y: 100}
++  m_Pivot: {x: 0.5, y: 0.5}
++--- !u!114 &1113847494
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1113847492}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: 
++  m_Material: {fileID: 0}
++  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
++  m_RaycastTarget: 1
++  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
++  m_Maskable: 1
++  m_OnCullStateChanged:
++    m_PersistentCalls:
++      m_Calls: []
++  m_FontData:
++    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
++    m_FontSize: 50
++    m_FontStyle: 0
++    m_BestFit: 0
++    m_MinSize: 5
++    m_MaxSize: 50
++    m_Alignment: 4
++    m_AlignByGeometry: 0
++    m_RichText: 1
++    m_HorizontalOverflow: 1
++    m_VerticalOverflow: 1
++    m_LineSpacing: 1
++  m_Text: Count 0
++--- !u!222 &1113847495
++CanvasRenderer:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1113847492}
++  m_CullTransparentMesh: 1
+ --- !u!1 &1145384454
+ GameObject:
+   m_ObjectHideFlags: 0
+@@ -1325,6 +1532,107 @@ Transform:
+   m_Father: {fileID: 0}
+   m_RootOrder: 5
+   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
++--- !u!1 &1463970448
++GameObject:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  serializedVersion: 6
++  m_Component:
++  - component: {fileID: 1463970452}
++  - component: {fileID: 1463970451}
++  - component: {fileID: 1463970450}
++  - component: {fileID: 1463970449}
++  m_Layer: 5
++  m_Name: Canvas
++  m_TagString: Untagged
++  m_Icon: {fileID: 0}
++  m_NavMeshLayer: 0
++  m_StaticEditorFlags: 0
++  m_IsActive: 1
++--- !u!114 &1463970449
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1463970448}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: 
++  m_IgnoreReversedGraphics: 1
++  m_BlockingObjects: 0
++  m_BlockingMask:
++    serializedVersion: 2
++    m_Bits: 4294967295
++--- !u!114 &1463970450
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1463970448}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: 
++  m_UiScaleMode: 0
++  m_ReferencePixelsPerUnit: 100
++  m_ScaleFactor: 1
++  m_ReferenceResolution: {x: 800, y: 600}
++  m_ScreenMatchMode: 0
++  m_MatchWidthOrHeight: 0
++  m_PhysicalUnit: 3
++  m_FallbackScreenDPI: 96
++  m_DefaultSpriteDPI: 96
++  m_DynamicPixelsPerUnit: 1
++  m_PresetInfoIsWorld: 0
++--- !u!223 &1463970451
++Canvas:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1463970448}
++  m_Enabled: 1
++  serializedVersion: 3
++  m_RenderMode: 1
++  m_Camera: {fileID: 519420031}
++  m_PlaneDistance: 100
++  m_PixelPerfect: 0
++  m_ReceivesEvents: 1
++  m_OverrideSorting: 0
++  m_OverridePixelPerfect: 0
++  m_SortingBucketNormalizedSize: 0
++  m_AdditionalShaderChannelsFlag: 0
++  m_SortingLayerID: 0
++  m_SortingOrder: 0
++  m_TargetDisplay: 0
++--- !u!224 &1463970452
++RectTransform:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1463970448}
++  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
++  m_LocalPosition: {x: 0, y: 0, z: 0}
++  m_LocalScale: {x: 0, y: 0, z: 0}
++  m_Children:
++  - {fileID: 1113847493}
++  - {fileID: 940844194}
++  m_Father: {fileID: 0}
++  m_RootOrder: 7
++  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
++  m_AnchorMin: {x: 0, y: 0}
++  m_AnchorMax: {x: 0, y: 0}
++  m_AnchoredPosition: {x: 0, y: 0}
++  m_SizeDelta: {x: 0, y: 0}
++  m_Pivot: {x: 0, y: 0}
+ --- !u!1 &1548987145
+ GameObject:
+   m_ObjectHideFlags: 0
+@@ -1387,6 +1695,286 @@ Transform:
+   m_Father: {fileID: 1145384455}
+   m_RootOrder: 2
+   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
++--- !u!1 &1755621659
++GameObject:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  serializedVersion: 6
++  m_Component:
++  - component: {fileID: 1755621663}
++  - component: {fileID: 1755621662}
++  - component: {fileID: 1755621661}
++  - component: {fileID: 1755621660}
++  m_Layer: 0
++  m_Name: HomeButton
++  m_TagString: Untagged
++  m_Icon: {fileID: 0}
++  m_NavMeshLayer: 0
++  m_StaticEditorFlags: 0
++  m_IsActive: 1
++--- !u!114 &1755621660
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1755621659}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: 
++  m_Delegates:
++  - eventID: 4
++    callback:
++      m_PersistentCalls:
++        m_Calls:
++        - m_Target: {fileID: 308605499}
++          m_TargetAssemblyTypeName: UserImput, Assembly-CSharp
++          m_MethodName: TouchHomeButton
++          m_Mode: 1
++          m_Arguments:
++            m_ObjectArgument: {fileID: 0}
++            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
++            m_IntArgument: 0
++            m_FloatArgument: 0
++            m_StringArgument: 
++            m_BoolArgument: 0
++          m_CallState: 2
++--- !u!61 &1755621661
++BoxCollider2D:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1755621659}
++  m_Enabled: 1
++  m_Density: 1
++  m_Material: {fileID: 0}
++  m_IsTrigger: 0
++  m_UsedByEffector: 0
++  m_UsedByComposite: 0
++  m_Offset: {x: 0, y: 0}
++  m_SpriteTilingProperty:
++    border: {x: 0, y: 0, z: 0, w: 0}
++    pivot: {x: 0.5, y: 0.5}
++    oldSize: {x: 2.56, y: 2.56}
++    newSize: {x: 2.56, y: 2.56}
++    adaptiveTilingThreshold: 0.5
++    drawMode: 0
++    adaptiveTiling: 0
++  m_AutoTiling: 0
++  serializedVersion: 2
++  m_Size: {x: 2.56, y: 2.56}
++  m_EdgeRadius: 0
++--- !u!212 &1755621662
++SpriteRenderer:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1755621659}
++  m_Enabled: 1
++  m_CastShadows: 0
++  m_ReceiveShadows: 0
++  m_DynamicOccludee: 1
++  m_StaticShadowCaster: 0
++  m_MotionVectors: 1
++  m_LightProbeUsage: 1
++  m_ReflectionProbeUsage: 1
++  m_RayTracingMode: 0
++  m_RayTraceProcedural: 0
++  m_RenderingLayerMask: 1
++  m_RendererPriority: 0
++  m_Materials:
++  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
++  m_StaticBatchInfo:
++    firstSubMesh: 0
++    subMeshCount: 0
++  m_StaticBatchRoot: {fileID: 0}
++  m_ProbeAnchor: {fileID: 0}
++  m_LightProbeVolumeOverride: {fileID: 0}
++  m_ScaleInLightmap: 1
++  m_ReceiveGI: 1
++  m_PreserveUVs: 0
++  m_IgnoreNormalsForChartDetection: 0
++  m_ImportantGI: 0
++  m_StitchLightmapSeams: 1
++  m_SelectedEditorRenderState: 0
++  m_MinimumChartSize: 4
++  m_AutoUVMaxDistance: 0.5
++  m_AutoUVMaxAngle: 89
++  m_LightmapParameters: {fileID: 0}
++  m_SortingLayerID: 0
++  m_SortingLayer: 0
++  m_SortingOrder: 0
++  m_Sprite: {fileID: 21300000, guid: fef510bddf1a62b4eb352f7454c6dd5c, type: 3}
++  m_Color: {r: 1, g: 1, b: 1, a: 1}
++  m_FlipX: 0
++  m_FlipY: 0
++  m_DrawMode: 0
++  m_Size: {x: 2.56, y: 2.56}
++  m_AdaptiveModeThreshold: 0.5
++  m_SpriteTileMode: 0
++  m_WasSpriteAssigned: 1
++  m_MaskInteraction: 0
++  m_SpriteSortPoint: 0
++--- !u!4 &1755621663
++Transform:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1755621659}
++  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
++  m_LocalPosition: {x: 6.67, y: -4.36, z: 0}
++  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
++  m_Children: []
++  m_Father: {fileID: 0}
++  m_RootOrder: 8
++  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
++--- !u!1 &1776994548
++GameObject:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  serializedVersion: 6
++  m_Component:
++  - component: {fileID: 1776994552}
++  - component: {fileID: 1776994551}
++  - component: {fileID: 1776994549}
++  - component: {fileID: 1776994550}
++  m_Layer: 0
++  m_Name: ResetButton
++  m_TagString: Untagged
++  m_Icon: {fileID: 0}
++  m_NavMeshLayer: 0
++  m_StaticEditorFlags: 0
++  m_IsActive: 1
++--- !u!114 &1776994549
++MonoBehaviour:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1776994548}
++  m_Enabled: 1
++  m_EditorHideFlags: 0
++  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
++  m_Name: 
++  m_EditorClassIdentifier: 
++  m_Delegates:
++  - eventID: 4
++    callback:
++      m_PersistentCalls:
++        m_Calls:
++        - m_Target: {fileID: 308605499}
++          m_TargetAssemblyTypeName: UserImput, Assembly-CSharp
++          m_MethodName: TouchResetButton
++          m_Mode: 1
++          m_Arguments:
++            m_ObjectArgument: {fileID: 0}
++            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
++            m_IntArgument: 0
++            m_FloatArgument: 0
++            m_StringArgument: 
++            m_BoolArgument: 0
++          m_CallState: 2
++--- !u!61 &1776994550
++BoxCollider2D:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1776994548}
++  m_Enabled: 1
++  m_Density: 1
++  m_Material: {fileID: 0}
++  m_IsTrigger: 0
++  m_UsedByEffector: 0
++  m_UsedByComposite: 0
++  m_Offset: {x: 0, y: 0}
++  m_SpriteTilingProperty:
++    border: {x: 0, y: 0, z: 0, w: 0}
++    pivot: {x: 0.5, y: 0.5}
++    oldSize: {x: 9.8, y: 9.8}
++    newSize: {x: 9.8, y: 9.8}
++    adaptiveTilingThreshold: 0.5
++    drawMode: 0
++    adaptiveTiling: 0
++  m_AutoTiling: 0
++  serializedVersion: 2
++  m_Size: {x: 9.8, y: 9.8}
++  m_EdgeRadius: 0
++--- !u!212 &1776994551
++SpriteRenderer:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1776994548}
++  m_Enabled: 1
++  m_CastShadows: 0
++  m_ReceiveShadows: 0
++  m_DynamicOccludee: 1
++  m_StaticShadowCaster: 0
++  m_MotionVectors: 1
++  m_LightProbeUsage: 1
++  m_ReflectionProbeUsage: 1
++  m_RayTracingMode: 0
++  m_RayTraceProcedural: 0
++  m_RenderingLayerMask: 1
++  m_RendererPriority: 0
++  m_Materials:
++  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
++  m_StaticBatchInfo:
++    firstSubMesh: 0
++    subMeshCount: 0
++  m_StaticBatchRoot: {fileID: 0}
++  m_ProbeAnchor: {fileID: 0}
++  m_LightProbeVolumeOverride: {fileID: 0}
++  m_ScaleInLightmap: 1
++  m_ReceiveGI: 1
++  m_PreserveUVs: 0
++  m_IgnoreNormalsForChartDetection: 0
++  m_ImportantGI: 0
++  m_StitchLightmapSeams: 1
++  m_SelectedEditorRenderState: 0
++  m_MinimumChartSize: 4
++  m_AutoUVMaxDistance: 0.5
++  m_AutoUVMaxAngle: 89
++  m_LightmapParameters: {fileID: 0}
++  m_SortingLayerID: 0
++  m_SortingLayer: 0
++  m_SortingOrder: 0
++  m_Sprite: {fileID: 21300000, guid: ba19d43b1b91d6a4da08a91e9228c8fe, type: 3}
++  m_Color: {r: 1, g: 1, b: 1, a: 1}
++  m_FlipX: 0
++  m_FlipY: 0
++  m_DrawMode: 0
++  m_Size: {x: 9.8, y: 9.8}
++  m_AdaptiveModeThreshold: 0.5
++  m_SpriteTileMode: 0
++  m_WasSpriteAssigned: 1
++  m_MaskInteraction: 0
++  m_SpriteSortPoint: 0
++--- !u!4 &1776994552
++Transform:
++  m_ObjectHideFlags: 0
++  m_CorrespondingSourceObject: {fileID: 0}
++  m_PrefabInstance: {fileID: 0}
++  m_PrefabAsset: {fileID: 0}
++  m_GameObject: {fileID: 1776994548}
++  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
++  m_LocalPosition: {x: 8.17, y: -4.3600006, z: 0}
++  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
++  m_Children: []
++  m_Father: {fileID: 0}
++  m_RootOrder: 9
++  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+ --- !u!1 &1878488173
+ GameObject:
+   m_ObjectHideFlags: 0
+diff --git a/Assets/Script/TimerScript.cs b/Assets/Script/TimerScript.cs
+new file mode 100644
+index 0000000..4e2c7e8
+--- /dev/null
++++ b/Assets/Script/TimerScript.cs
+@@ -0,0 +1,52 @@
++using System.Collections;
++using System.Collections.Generic;
++using UnityEngine;
++using UnityEngine.UI;
++
++public class TimerScript : MonoBehaviour
++{
++    TowerOfHanoi ToH;
++
++    private int minute = 0;
++    private float second = 0f;
++    public Text TimerText;
++
++    // Start is called before the first frame update
++    void Start()
++    {
++        ToH = FindObjectOfType<TowerOfHanoi>();
++    }
++
++    // Update is called once per frame
++    void Update()
++    {
++        if (ToH.GameStarted) SetTimerText();
++    }
++
++    void SetTimerText()
++    {
++        second += Time.deltaTime;
++        if(second >= 60)
++        {
++            minute++;
++            second -= 60f;
++        }
++        if(!IsTimerCountFull()) TextChange();
++    }
++
++    void TextChange()
++    {
++        TimerText.text = minute.ToString("00") + ":" + ((int)second).ToString("00");
++    }
++
++    bool IsTimerCountFull()
++    {
++        if (second == 59f && minute == 99) return true;
++        else return false;
++    }
++
++    public void TimerReset()
++    {
++        //Reset‚·‚é
++    }
++}
+diff --git a/Assets/Script/TimerScript.cs.meta b/Assets/Script/TimerScript.cs.meta
+new file mode 100644
+index 0000000..60d606e
+--- /dev/null
++++ b/Assets/Script/TimerScript.cs.meta
+@@ -0,0 +1,11 @@
++fileFormatVersion: 2
++guid: 030fa52dcba9be0479457c8ad2cef377
++MonoImporter:
++  externalObjects: {}
++  serializedVersion: 2
++  defaultReferences: []
++  executionOrder: 0
++  icon: {instanceID: 0}
++  userData: 
++  assetBundleName: 
++  assetBundleVariant: 
+diff --git a/Assets/Script/TowerOfHanoi.cs b/Assets/Script/TowerOfHanoi.cs
+index d749c6d..7ace0a0 100644
+--- a/Assets/Script/TowerOfHanoi.cs
++++ b/Assets/Script/TowerOfHanoi.cs
+@@ -1,6 +1,7 @@
+ using System.Collections;
+ using System.Collections.Generic;
+ using UnityEngine;
++using UnityEngine.UI;
+ 
+ public class TowerOfHanoi : MonoBehaviour
+ {
+@@ -9,8 +10,14 @@ public class TowerOfHanoi : MonoBehaviour
+     public GameObject[] WheelPrefabs;
+     public GameObject PickUpBox;
+     public GameObject[] WheelParents;
++    public GameObject HomeButton;
++    public GameObject ResetButton;
++    public Text CountText;
+ 
+-    public int GameLevel = 1;
++    public int GameLevel = 0;
++    public int MoveCount = 0;
++
++    public bool GameStarted = true;
+ 
+     // Start is called before the first frame update
+     void Start()
+@@ -27,9 +34,15 @@ public class TowerOfHanoi : MonoBehaviour
+ 
+     void StartGame()
+     {
++        //SetGameLevel(level);
+         StartCoroutine(MakeTowerBySelectLevel(GameLevel));
+     }
+ 
++    void SetGameLevel(int level)
++    {
++        GameLevel = level;
++    }
++
+     IEnumerator MakeTowerBySelectLevel(int level)
+     {
+         for(int i = level-1; i >= 0; i--)
+@@ -83,8 +96,15 @@ public class TowerOfHanoi : MonoBehaviour
+         else return 8;
+     }
+ 
+-    public void GameSet()
++    public void SetTextForCount()
+     {
++        if (MoveCount <= 1000) MoveCount++;
++        CountText.text = "Count " + MoveCount.ToString();
++    }
+ 
++    public void GameSet()
++    {
++        Debug.Log("GameSet");
++        GameStarted = false;
+     }
+ }
+diff --git a/Assets/Script/UserImput.cs b/Assets/Script/UserImput.cs
+index 2079a15..f3658d4 100644
+--- a/Assets/Script/UserImput.cs
++++ b/Assets/Script/UserImput.cs
+@@ -43,7 +43,11 @@ public class UserImput : MonoBehaviour
+         if (ToH.HasPickUp())
+         {
+             //Debug.Log("HasPickUp");
+-            if (ToH.IsValidForValue(index)) wheelStack.PushWheel(index);
++            if (ToH.IsValidForValue(index))
++            {
++                wheelStack.PushWheel(index);
++                ToH.SetTextForCount();
++            }
+         }
+         else if(!wheelStack.IsEmpty(index))
+         {
+@@ -51,4 +55,14 @@ public class UserImput : MonoBehaviour
+             wheelStack.PopWheel(ToH.GetPickUp(),index);
+         }
+     }
++
++    public void TouchHomeButton()
++    {
++        Debug.Log("TouchHomeButton");
++    }
++
++    public void TouchResetButton()
++    {
++        Debug.Log("TouchResetButton");
++    }
+ }
+-- 
+2.30.2.windows.1
+
