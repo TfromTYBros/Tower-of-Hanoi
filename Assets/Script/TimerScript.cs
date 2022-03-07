@@ -5,22 +5,20 @@ using UnityEngine.UI;
 
 public class TimerScript : MonoBehaviour
 {
-    TowerOfHanoi ToH;
+    private static int minute = 0;
+    private static float second = 0f;
+    public static Text TimerText;
+    private static bool Stop = false;
 
-    private int minute = 0;
-    private float second = 0f;
-    public Text TimerText;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        ToH = FindObjectOfType<TowerOfHanoi>();
+        TimerText = gameObject.GetComponent<Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (ToH.GameStarted) SetTimerText();
+        if (TowerOfHanoi.GameStarted && !Stop) SetTimerText();
     }
 
     void SetTimerText()
@@ -34,7 +32,7 @@ public class TimerScript : MonoBehaviour
         if(!IsTimerCountFull()) TextChange();
     }
 
-    void TextChange()
+    static void TextChange()
     {
         TimerText.text = minute.ToString("00") + ":" + ((int)second).ToString("00");
     }
@@ -45,8 +43,22 @@ public class TimerScript : MonoBehaviour
         else return false;
     }
 
-    public void TimerReset()
+    public static void TimerReset()
     {
-        //Reset‚·‚é
+        Stop = true;
+        minute = 0;
+        second = 0;
+        TextChange();
+    }
+
+    public static void TimerStart()
+    {
+        Stop = false;
+    }
+
+    public static IEnumerator DelayTimerStart(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Stop = false;
     }
 }

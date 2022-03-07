@@ -5,25 +5,25 @@ using UnityEngine.UI;
 
 public class TowerOfHanoi : MonoBehaviour
 {
-    WheelStack wheelStack;
-
     public GameObject[] Bases;
     public GameObject[] WheelPrefabs;
     public GameObject PickUpBox;
     public GameObject[] WheelParents;
+
     public GameObject HomeButton;
     public GameObject ResetButton;
     public Text CountText;
 
-    public static int GameLevel = 1;
+    public static int GameLevel = 3;
     private int MoveCount = 0;
 
-    public bool GameStarted = true;
+    public BoxCollider2D[] cols;
+
+    public static bool GameStarted = true;
 
     // Start is called before the first frame update
     void Start()
     {
-        wheelStack = FindObjectOfType<WheelStack>();
         StartGame();
     }
 
@@ -56,19 +56,28 @@ public class TowerOfHanoi : MonoBehaviour
     public Vector3 SetDistance(int index)
     {
         GameObject onebase = Bases[index];
-        return new Vector3(onebase.transform.position.x, onebase.transform.position.y + 0.5f + (wheelStack.GetChildCount(index) * 0.5f), onebase.transform.position.z);
+        return new Vector3(onebase.transform.position.x, onebase.transform.position.y + 0.5f + (GetChildCountByWheelParent(index) * 0.5f), onebase.transform.position.z);
     }
 
-    public bool HasPickUp()
+    public bool IsValidForValue(int index)
     {
-        return 0 < GetPickUpBoxChildCount();
+        int pickWheelRank = IsRank(GetPickUpChild());
+        int topWheelRank;
+        if (PeekWheel(index) == null) return true;
+        else topWheelRank = IsRank(PeekWheel(index));
+
+        //Debug.Log("picknum" + pickWheelRank);
+        //Debug.Log("topnum" + topWheelRank);
+
+        return pickWheelRank < topWheelRank;
     }
+
 
     public void SetPickUpChild(int index)
     {
-        Debug.Log("SetPickUpChild(): ");
-        WheelParents[index].transform.gameObject.transform.GetChild(wheelStack.GetChildCount(index) - 1).gameObject.transform.parent = GetPickUpChild().transform;
-        
+        //Debug.Log("SetPickUpChild(): ");
+        WheelParents[index].transform.gameObject.transform.GetChild(GetChildCountByWheelParent(index) - 1).gameObject.transform.parent = GetPickUpChild().transform;
+
     }
 
     public GameObject GetPickUpBox()
@@ -81,24 +90,61 @@ public class TowerOfHanoi : MonoBehaviour
         return PickUpBox.transform.GetChild(0).gameObject;
     }
 
-    public int GetPickUpBoxChildCount()
+    public int GetChildCountByPickUpBox()
     {
-        int count = PickUpBox.transform.childCount == 1 ? 1 : 0;
-        Debug.Log("count(): " + count);
-        return count;
+        return PickUpBox.transform.childCount;
     }
 
-    public bool IsValidForValue(int index)
+    public int GetChildCountByWheelParent(int index)
     {
-        int pickWheelRank = IsRank(GetPickUpChild());
-        int topWheelRank;
-        if (wheelStack.PeekWheel(index) == null) return true;
-        else topWheelRank = IsRank(wheelStack.PeekWheel(index));
+        //Debug.Log(WheelParents[index].gameObject.transform.childCount);
+        return WheelParents[index].gameObject.transform.childCount;
+    }
 
-        //Debug.Log("picknum" + pickWheelRank);
-        //Debug.Log("topnum" + topWheelRank);
+    public bool HasPickUp()
+    {
+        //Debug.Log("HasPickUp" + (0 < PickUpBox.transform.childCount));
+        return 0 < PickUpBox.transform.childCount;
+    }
 
-        return pickWheelRank < topWheelRank;
+    public void GetTopWheel(int index)
+    {
+        //Debug.Log("GetChildCount(0): " + GetChildCount(0));
+        WheelParents[index].transform.gameObject.transform.GetChild(GetChildCountByWheelParent(index) - 1).gameObject.transform.parent = GetPickUpBox().transform;
+    }
+
+    public GameObject PeekWheel(int index)
+    {
+        if (GetChildCountByWheelParent(index) <= 0) return null;
+        return WheelParents[index].transform.GetChild(GetChildCountByWheelParent(index) - 1).gameObject;
+    }
+
+    public void PopWheel(GameObject wheel, int index)
+    {
+        Vector3 Flying = GetFlyDistance(index);
+        wheel.transform.position = Flying;
+    }
+
+    public Vector3 GetFlyDistance(int index)
+    {
+        GameObject onebase = Bases[index];
+        return new Vector3(onebase.transform.position.x, onebase.transform.position.y + 6, onebase.transform.position.z);
+    }
+
+    public void PushWheel(int index)
+    {
+        //Debug.Log("PushWheel()");
+        GameObject wheel = GetPickUpChild();
+
+        wheel.transform.position = SetDistance(index);
+
+        wheel.transform.parent = WheelParents[index].transform;
+    }
+
+    public bool IsEmpty(int index)
+    {
+        //Debug.Log("IsEmpty():");
+        return GetChildCountByWheelParent(index) <= 0;
     }
 
     int IsRank(GameObject obj)
@@ -114,15 +160,60 @@ public class TowerOfHanoi : MonoBehaviour
         else return 8;
     }
 
-    public void SetTextForCount()
+    public void SetCountText()
     {
         if (MoveCount <= 1000) MoveCount++;
+        MoveCountTextChanger();
+    }
+
+    void MoveCountTextChanger()
+    {
         CountText.text = "Count " + MoveCount.ToString();
+    }
+
+    void MoveCountTextReset()
+    {
+        MoveCount = 0;
+        MoveCountTextChanger();
+    }
+
+    public void CallResetMethodPanel()
+    {
+        
     }
 
     public void ResetMethod()
     {
-        GameObject.Destroy(GetPickUpChild());
+        if(GetChildCountByPickUpBox() == 1) GameObject.Destroy(GetPickUpChild());
+        for(int i = 0; i < 3; i++)
+        {
+            if(0 < GetChildCountByWheelParent(i))
+            {
+                foreach (Transform child in WheelParents[i].transform) GameObject.Destroy(child.gameObject);
+            }
+        }
+        MoveCountTextReset();
+        float delay = 0.1f + (0.1f * GameLevel);
+        TimerScript.TimerReset();
+        StartCoroutine(TimerScript.DelayTimerStart(delay));
+        AllCollider2dFalse();
+        StartCoroutine(AllCollider2dTrue(delay));
+        StartGame();
+    }
+
+    void AllCollider2dFalse()
+    {
+        cols[0].enabled = false;
+        cols[1].enabled = false;
+        cols[2].enabled = false;
+    }
+
+    IEnumerator AllCollider2dTrue(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        cols[0].enabled = true;
+        cols[1].enabled = true;
+        cols[2].enabled = true;
     }
 
     public void GameSet()
