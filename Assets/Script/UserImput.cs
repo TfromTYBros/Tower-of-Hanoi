@@ -11,6 +11,20 @@ public class UserImput : MonoBehaviour
         ToH = FindObjectOfType<TowerOfHanoi>();
     }
 
+    /*
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            CaptureScreenShot("ScreenShot.png");
+        }
+    }
+
+    private void CaptureScreenShot(string filePath)
+    {
+        ScreenCapture.CaptureScreenshot(filePath);
+    }*/
+
     public void TouchLeft()
     {
         Debug.Log("TouchLeft");

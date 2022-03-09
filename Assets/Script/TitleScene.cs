@@ -8,6 +8,7 @@ public class TitleScene : MonoBehaviour
 {
     public void SceneChangeToGameScene()
     {
+        TimerScript.TimerStart();
         SceneManager.LoadScene("GameScene");
     }
 }

@@ -135,9 +135,7 @@ public class TowerOfHanoi : MonoBehaviour
     {
         //Debug.Log("PushWheel()");
         GameObject wheel = GetPickUpChild();
-
         wheel.transform.position = SetDistance(index);
-
         wheel.transform.parent = WheelParents[index].transform;
     }
 
@@ -175,11 +173,6 @@ public class TowerOfHanoi : MonoBehaviour
     {
         MoveCount = 0;
         MoveCountTextChanger();
-    }
-
-    public void CallResetMethodPanel()
-    {
-        
     }
 
     public void ResetMethod()
