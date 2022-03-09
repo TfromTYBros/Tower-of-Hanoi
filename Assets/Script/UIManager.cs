@@ -8,32 +8,46 @@ public class UIManager : MonoBehaviour
     TowerOfHanoi ToH;
     public GameObject HomePanel;
     public GameObject ResetPanel;
+    [SerializeField] private GameObject ClearUITemp;
+    public static GameObject ClearUI;
 
     void Start()
     {
+        SetClearUI();
         ToH = FindObjectOfType<TowerOfHanoi>();
     }
 
     public void TouchHomeButton()
     {
         //Debug.Log("TouchHomeButton");
-        HomePanelToEnabled();
+        if(!TowerOfHanoi.GetGameEnd())HomePanelToEnabled();
+        else
+        {
+            SetDisabledClearUI();
+            ToH.ResetMethod();
+            SceneManager.LoadScene("HomeScene");
+        }
     }
 
     public void TouchResetButton()
     {
         //Debug.Log("TouchResetButton");
-        ResetPanelToEnabled();
+        if(!TowerOfHanoi.GetGameEnd())ResetPanelToEnabled();
+        else
+        {
+            SetDisabledClearUI();
+            ToH.ResetMethod();
+        }
     }
 
-    public void YesButtonFromHomePanel()
+    public void HomePanelYesButton()
     {
         HomePanelToDisabled();
         ToH.ResetMethod();
         SceneManager.LoadScene("HomeScene");
     }
 
-    public void YesButtonFromResetPanel()
+    public void ResetPanelYesButton()
     {
         ResetPanelToDisabled();
         ToH.ResetMethod();
@@ -57,5 +71,20 @@ public class UIManager : MonoBehaviour
     public void HomePanelToEnabled()
     {
         HomePanel.SetActive(true);
+    }
+
+    void SetClearUI()
+    {
+        ClearUI = ClearUITemp;
+    }
+    
+    public static void SetEnabledClearUI()
+    {
+        ClearUI.SetActive(true);
+    }
+
+    public static void SetDisabledClearUI()
+    {
+        ClearUI.SetActive(false);
     }
 }

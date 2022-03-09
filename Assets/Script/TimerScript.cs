@@ -18,7 +18,7 @@ public class TimerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (TowerOfHanoi.GameStarted && !Stop) SetTimerText();
+        if (!TowerOfHanoi.GameEnd && !Stop) SetTimerText();
     }
 
     void SetTimerText()

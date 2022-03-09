@@ -19,7 +19,7 @@ public class TowerOfHanoi : MonoBehaviour
 
     public BoxCollider2D[] cols;
 
-    public static bool GameStarted = true;
+    public static bool GameEnd = false;
 
     // Start is called before the first frame update
     void Start()
@@ -185,23 +185,24 @@ public class TowerOfHanoi : MonoBehaviour
                 foreach (Transform child in WheelParents[i].transform) GameObject.Destroy(child.gameObject);
             }
         }
+        SetFalseGameEnd();
         MoveCountTextReset();
         float delay = 0.1f + (0.1f * GameLevel);
         TimerScript.TimerReset();
         StartCoroutine(TimerScript.DelayTimerStart(delay));
-        AllCollider2dFalse();
-        StartCoroutine(AllCollider2dTrue(delay));
+        FalseAllCollider2d();
+        StartCoroutine(TrueAllCollider2d(delay));
         StartGame();
     }
 
-    void AllCollider2dFalse()
+    void FalseAllCollider2d()
     {
         cols[0].enabled = false;
         cols[1].enabled = false;
         cols[2].enabled = false;
     }
 
-    IEnumerator AllCollider2dTrue(float delay)
+    IEnumerator TrueAllCollider2d(float delay)
     {
         yield return new WaitForSeconds(delay);
         cols[0].enabled = true;
@@ -212,6 +213,23 @@ public class TowerOfHanoi : MonoBehaviour
     public void GameSet()
     {
         Debug.Log("GameSet");
-        GameStarted = false;
+        SetTrueGameEnd();
+        FalseAllCollider2d();
+        UIManager.SetEnabledClearUI();
+    }
+
+    public static bool GetGameEnd()
+    {
+        return GameEnd;
+    }
+
+    public static void SetFalseGameEnd()
+    {
+        GameEnd = false;
+    }
+
+    public static void SetTrueGameEnd()
+    {
+        GameEnd = true;
     }
 }

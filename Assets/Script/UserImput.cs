@@ -27,19 +27,19 @@ public class UserImput : MonoBehaviour
 
     public void TouchLeft()
     {
-        Debug.Log("TouchLeft");
+        //Debug.Log("TouchLeft");
         Move(0);
     }
 
     public void TouchCenter()
     {
-        Debug.Log("TouchCenter");
+        //Debug.Log("TouchCenter");
         Move(1);
     }
 
     public void TouchRight()
     {
-        Debug.Log("TouchRight");
+        //Debug.Log("TouchRight");
         Move(2);
         if (ToH.GetChildCountByWheelParent(2) == TowerOfHanoi.GetGameLevel()) ToH.GameSet();
     }
