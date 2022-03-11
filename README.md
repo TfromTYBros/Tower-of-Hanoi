@@ -1,21 +1,19 @@
 # name
 Tower-of-Hanoi
-image or gif
+![gif](https://github.com/TfromTYBros/Tower-of-Hanoi/edit/main/sample.gif)
 
 ## Overview
+https://recursionist.io/dashboard/course/22/lesson/820
+の課題です。
+制作時間は23時間です。
 
 ## Requirement
-
-## Usage
-
-## Features
-
-## Reference
+-windows10
+-Unity2021.1.14f.1
 
 ## Author
 
-[twitter](https://twitter.com/Kotabrog)
+[twitter](https://twitter.com/HappyRoutineEL)
 
 ## Licence
-
-[MIT](https://......)
+Copyright (C) 2002-2019 M+ FONTS PROJECT
