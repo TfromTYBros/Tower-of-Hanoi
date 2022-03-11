@@ -1,6 +1,6 @@
 # name
 Tower-of-Hanoi
-![gif](https://github.com/TfromTYBros/Tower-of-Hanoi/edit/main/sample.gif)
+![gif](https://github.com/TfromTYBros/Tower-of-Hanoi/blob/main/sample.gif)
 
 ## Overview
 https://recursionist.io/dashboard/course/22/lesson/820
