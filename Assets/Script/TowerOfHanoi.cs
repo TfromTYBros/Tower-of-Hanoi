@@ -14,7 +14,7 @@ public class TowerOfHanoi : MonoBehaviour
     public GameObject ResetButton;
     public Text CountText;
 
-    public static int GameLevel = 3;
+    private static int GameLevel = 3;
     private int MoveCount = 0;
 
     public BoxCollider2D[] cols;
@@ -212,7 +212,7 @@ public class TowerOfHanoi : MonoBehaviour
 
     public void GameSet()
     {
-        Debug.Log("GameSet");
+        //Debug.Log("GameSet");
         SetTrueGameEnd();
         FalseAllCollider2d();
         UIManager.SetEnabledClearUI();

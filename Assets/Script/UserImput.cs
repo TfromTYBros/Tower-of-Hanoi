@@ -11,20 +11,6 @@ public class UserImput : MonoBehaviour
         ToH = FindObjectOfType<TowerOfHanoi>();
     }
 
-    /*
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            CaptureScreenShot("ScreenShot.png");
-        }
-    }
-
-    private void CaptureScreenShot(string filePath)
-    {
-        ScreenCapture.CaptureScreenshot(filePath);
-    }*/
-
     public void TouchLeft()
     {
         //Debug.Log("TouchLeft");
@@ -64,11 +50,24 @@ public class UserImput : MonoBehaviour
 
     public void TouchHomeButton()
     {
-        Debug.Log("TouchHomeButton");
+        //Debug.Log("TouchHomeButton");
+        if (!TowerOfHanoi.GetGameEnd()) UIManager.HomePanelToEnabled();
+        else
+        {
+            UIManager.SetDisabledClearUI();
+            ToH.ResetMethod();
+            UnityEngine.SceneManagement.SceneManager.LoadScene("HomeScene");
+        }
     }
 
     public void TouchResetButton()
     {
-        Debug.Log("TouchResetButton");
+        //Debug.Log("TouchResetButton");
+        if (!TowerOfHanoi.GetGameEnd()) UIManager.ResetPanelToEnabled();
+        else
+        {
+            UIManager.SetDisabledClearUI();
+            ToH.ResetMethod();
+        }
     }
 }

@@ -9,13 +9,19 @@ public class DropDownScript : MonoBehaviour
 
     private void Start()
     {
-        gameLevelDropDown.value = TowerOfHanoi.GameLevel-1;
-        TowerOfHanoi.SetGameLevel(TowerOfHanoi.GameLevel);
+        gameLevelDropDown.value = TowerOfHanoi.GetGameLevel()-1;
+        TowerOfHanoi.SetGameLevel(TowerOfHanoi.GetGameLevel());
     }
 
     public void SetGameLevelByDDS()
     {
         int level = gameLevelDropDown.value + 1;
+        TowerOfHanoi.SetGameLevel(level);
+    }
+
+    public void SetGameLevelAnimationButton(int level)
+    {
+        gameLevelDropDown.value = level-1;
         TowerOfHanoi.SetGameLevel(level);
     }
 }
